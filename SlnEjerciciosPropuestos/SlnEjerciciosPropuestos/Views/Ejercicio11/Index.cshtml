@@ -1,0 +1,50 @@
+﻿@model SlnEjerciciosPropuestos.Models.ClsEjercicio11
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h1>DIBUJO DE FIGURAS</h1>
+        <br />
+        @using (Html.BeginForm("Index2", "Ejercicio11", FormMethod.Post))
+        {
+            <p>
+                @Html.LabelFor(model => model.caracter, "Ingrese caracter a dibujar : ")
+                @Html.EditorFor(model => model.caracter)
+            </p>
+            <p>
+                @Html.LabelFor(model => model.numero, "Ingrese numero : ")
+                @Html.EditorFor(model => model.numero)
+            </p>
+            
+            <input type="submit" value=" CREAR CADENAS " />
+            <br />
+            <br />
+            <br />
+            if(Session["i"] == null)
+            {
+                Session["i"] = 1;
+            }
+            else
+            {
+                int cont = Convert.ToInt32(Session["i"]);
+                Session["i"] = cont++;
+                <div style="line-height: 0px">
+                         @for(int i = 0; i < Model.cadenas.Count - 1; i++)
+                         {
+                             <p>@Model.cadenas.ElementAt(i)</p>
+                         }
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>

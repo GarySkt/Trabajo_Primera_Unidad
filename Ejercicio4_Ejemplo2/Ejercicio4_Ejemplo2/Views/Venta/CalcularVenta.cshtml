@@ -1,0 +1,57 @@
+﻿@model Ejercicio4_Ejemplo2.Models.ClsVentas
+
+@{
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CalcularVenta</title>
+</head>
+<body>
+    <div> 
+        <br/><h1>Venta de productos</h1>
+        <br />
+        @using (Html.BeginForm("CalcularVenta", "Venta", FormMethod.Post))
+        {
+            <div>
+                <p>
+                    @Html.LabelFor(model => model.nombre, "Nombre")
+                    @Html.EditorFor(model => model.nombre)
+                </p>
+                <br/>
+                <p>
+                    @Html.LabelFor(model => model.nombre, "Direccion")
+                    @Html.EditorFor(model => model.direccion)
+                </p>
+                <br />
+                <p>
+                    @Html.CheckBoxFor(model => model.productoUSB, "--") USB 128 PETAS kigstong
+                </p>
+                <p>
+                    @Html.CheckBoxFor(model => model.productoMOUSE, "--") Mouse GAMER analogico
+                </p>
+                <p>
+                    @Html.CheckBoxFor(model => model.productoTECLADO, "--") Teclado bla bla bla
+                </p>
+                <p>
+                    @Html.CheckBoxFor(model => model.productoDISCODURO, "--") Disco demasiado Duro
+                </p>
+                <br />
+            </div>
+            <div>
+                <br />
+                <p><label>Sub Total: S/.@Model.subtotal</label></p>
+                <p><label>Sub Total: S/.@Model.igv</label></p>
+                <br />
+                <p><label>Total: S/.@Model.total</label></p>
+                <button>Calcular</button>
+                <br />
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿@model  SlnEjerciciosPropuestos.Models.ClsEjercicio9
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h1><b>Cajera de Banco</b></h1>
+        @using (Html.BeginForm("Index", "Ejercicio9", FormMethod.Post))
+        {
+            <p>
+                @Html.LabelFor(model => model.monto2, "Ingrese un monto : ")
+                @Html.EditorFor(model => model.monto2)<br />
+                @Html.ValidationMessage("Debe ingresar un monto.")
+            </p>
+            <input class="btn btn-primary" type="submit" value="Calcular" />
+
+            if (Session["i"] == null)
+            {
+                Session["i"] = 1;
+            }
+            else
+            {
+                Session["i"] = Convert.ToInt32(Session["i"])+1;
+                <div>
+                    <h3>Detalle</h3><br />
+                    <label>Monto : </label>@Model.monto2<br /><br />
+                    <label>Billete de 100 : </label>@Model.b100<br />
+                    <label>Billete de 50 : </label>@Model.b50<br />
+                    <label>Billete de 20 : </label>@Model.b20<br />
+                    <label>Billete de 10 : </label>@Model.b10<br /><br />
+                    <label>Cantidad de billetes : </label>@Model.cantidad<br /><br />
+                </div>
+            }
+
+
+        }
+    </div>
+</body>
+</html>

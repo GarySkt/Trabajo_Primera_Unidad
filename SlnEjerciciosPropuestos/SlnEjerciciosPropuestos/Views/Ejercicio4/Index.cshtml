@@ -1,0 +1,49 @@
+﻿@model SlnEjerciciosPropuestos.Models.ClsEjercicio4
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h2>TABLA DE NUMEROS</h2>
+        <br />
+        @using (Html.BeginForm("Index2", "Ejercicio4", FormMethod.Post))
+        {
+            <p>
+                @Html.LabelFor(model => model.cantnum, "Ingrese cantidad de numeros a generar : ")
+                @Html.EditorFor(model => model.cantnum)
+            </p>
+            
+            <input type="submit" value=" GENERAR " />
+            <br />
+            <br />
+            <br />
+            if(Session["i"] == null)
+            {
+                Session["i"] = 1;
+            }
+            else
+            {
+                int cont = Convert.ToInt32(Session["i"]);
+                Session["i"] = cont++;
+                <p>MONTO TOTAL : S/. <b>@(Model.monto)</b></p>
+
+                <h3><b>Elija el tipo de auto : </b></h3>
+                <p>
+                @Html.RadioButtonFor(model => model.tipoauto, "1") Auto Pequeno --> S/. 15 x Día<br />
+                @Html.RadioButtonFor(model => model.tipoauto, "2") Auto Pequeno --> S/. 20 x Día<br />
+                @Html.RadioButtonFor(model => model.tipoauto, "3") Auto Pequeno --> S/. 30 x Día<br />
+                </p>
+
+            }
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+﻿@model SlnEjerciciosPropuestos.Models.ClsEjercicio3
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    
+    <h1>ARREGLO PAR IMPAR</h1>
+        <br />
+        @using (Html.BeginForm("Index2", "Ejercicio3", FormMethod.Post))
+        {
+            <p>
+                @Html.LabelFor(model => model.arraynum[0] , "Ingrese numero 1 : ")
+                @Html.EditorFor(model => model.arraynum[0],"0")
+            </p>
+            <p>
+                @Html.LabelFor(model => model.arraynum[1] , "Ingrese numero 2 : ")
+                @Html.EditorFor(model => model.arraynum[1], "0")
+            </p>
+            <p>
+                @Html.LabelFor(model => model.arraynum[2] , "Ingrese numero 3 : ")
+                @Html.EditorFor(model => model.arraynum[2], "0")
+            </p>
+            <p>
+                @Html.LabelFor(model => model.arraynum[3] , "Ingrese numero 4 : ")
+                @Html.EditorFor(model => model.arraynum[3], "0")
+            </p>
+            <p>
+                @Html.LabelFor(model => model.arraynum[4] , "Ingrese numero 5 : ")
+                @Html.EditorFor(model => model.arraynum[4], "0")
+            </p>
+            <p>
+                @Html.LabelFor(model => model.arraynum[5] , "Ingrese numero 6 : ")
+                @Html.EditorFor(model => model.arraynum[5], "0")
+            </p>
+            <p>
+                @Html.LabelFor(model => model.arraynum[6] , "Ingrese numero 7 : ")
+                @Html.EditorFor(model => model.arraynum[6], "0")
+            </p>
+            <p>
+                @Html.LabelFor(model => model.arraynum[7] , "Ingrese numero 8 : ")
+                @Html.EditorFor(model => model.arraynum[7], "0")
+            </p>
+            <p>
+                @Html.LabelFor(model => model.arraynum[8] , "Ingrese numero 9 : ")
+                @Html.EditorFor(model => model.arraynum[8], "0")
+            </p>
+            <p>
+                @Html.LabelFor(model => model.arraynum[9] , "Ingrese numero 10 : ")
+                @Html.EditorFor(model => model.arraynum[9], "0")
+            </p>
+            
+            <input type="submit" value=" SEPARAR " />
+            <br />
+            <br />
+            if(Session["i"] == null)
+            {
+                Session["i"] = 1;
+            }
+            else
+            {
+                int cont = Convert.ToInt32(Session["i"]);
+                Session["i"] = cont++;
+                <p>NUMEROS : </p><br />
+                string cad = "";
+                for(int i = 0; i < 10; i++)
+                {
+                    cad = cad + Model.arraynum[i].ToString() + " | ";
+                }
+                cad = cad.Remove(cad.Length-3,3);
+                <b>@cad</b><br /><br />
+                <p>NUMEROS PARES : </p><br />
+                string cad2 = "";
+                for(int i = 0; i < Model.arraypar.Length; i++)
+                {
+                    cad2 = cad2 + Model.arraypar[i].ToString() + " | ";
+                }
+                cad2 = cad2.Remove(cad2.Length - 3, 3);
+                <b>@cad2</b><br /><br />
+                <p>MEDIA PAR : </p><br />
+                <b>@Model.mediapar</b><br /><br />
+                <p>NUMEROS IMPARES : </p><br />
+                string cad3 = "";
+                for(int i = 0; i < Model.arrayimpar.Length; i++)
+                {
+                    cad3 = cad3 + Model.arrayimpar[i].ToString() + " | ";
+                }
+                cad3 = cad3.Remove(cad3.Length - 3, 3);
+                <b>@cad3</b><br /><br />
+                <p>MEDIA IMPAR : </p><br />
+                <b>@Model.mediaimpar</b><br /><br />
+
+            }
+        }
+</body>
+</html>
